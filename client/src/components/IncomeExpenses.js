@@ -13,20 +13,56 @@ export const IncomeExpenses = () => {
     .toFixed(2);
 
   const expense = (
-    amounts.filter(item => item < 0).reduce((acc, item) => (acc += item), 0) *
-    -1
+    amounts.filter(item => item < 0).reduce((acc, item) => (acc += item), 0) * -1
   ).toFixed(2);
 
   return (
-    <div className="inc-exp-container">
-        <div>
-          <h4>Income</h4>
-  <p className="money plus">${numberWithCommas(income)}</p>
-        </div>
-        <div>
-          <h4>Expense</h4>
-  <p className="money minus">${numberWithCommas(expense)}</p>
-        </div>
+    <div style={styles.card}>
+      <div style={styles.box}>
+        <h4 style={styles.label}>Income</h4>
+        <p style={{ ...styles.amount, color: '#2ecc71' }}>
+          +${numberWithCommas(income)}
+        </p>
       </div>
-  )
-}
+      <div style={styles.divider} />
+      <div style={styles.box}>
+        <h4 style={styles.label}>Expense</h4>
+        <p style={{ ...styles.amount, color: '#e74c3c' }}>
+          -${numberWithCommas(expense)}
+        </p>
+      </div>
+    </div>
+  );
+};
+
+const styles = {
+  card: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    backgroundColor: '#fff',
+    padding: '20px',
+    boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+    borderRadius: '12px',
+    marginBottom: '20px',
+  },
+  box: {
+    flex: 1,
+    textAlign: 'center',
+  },
+  label: {
+    fontSize: '1rem',
+    color: '#555',
+    marginBottom: '5px',
+    fontWeight: '500',
+  },
+  amount: {
+    fontSize: '1.5rem',
+    margin: 0,
+    fontWeight: '600',
+  },
+  divider: {
+    width: '1px',
+    backgroundColor: '#eee',
+    margin: '0 20px',
+  }
+};

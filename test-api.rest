@@ -1,0 +1,26 @@
+### ✅ Get All Transactions
+GET http://localhost:6000/api/v1/transactions
+
+
+### ➕ Add a New Transaction
+POST http://localhost:6000/api/v1/transactions
+Content-Type: application/json
+
+{
+  "text": "Freelance Payment",
+  "amount": 5000
+}
+
+
+### ➖ Add a Negative Transaction (Expense)
+POST http://localhost:6000/api/v1/transactions
+Content-Type: application/json
+
+{
+  "text": "Internet Bill",
+  "amount": -800
+}
+
+
+### ❌ Delete a Transaction
+DELETE http://localhost:6000/api/v1/transactions/686ec23f8c61ee0fb89440fa
